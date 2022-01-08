@@ -16,12 +16,12 @@ module.exports = {
       amont: {
         allowNull: false,
         type: Sequelize.DECIMAL,
-       // references: {model: 'transactions', key: 'value'}
+        references: {model: 'Transactions', key: 'value'}
 
       },
       transactions: {
-        type: Sequelize.STRING,
-        //references: {model: 'transactions', key: 'sendTo'}
+        type: Sequelize.INTEGER,
+        references: {model: 'Transactions', key: 'sendTo'}
       }
 
     });

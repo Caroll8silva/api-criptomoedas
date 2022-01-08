@@ -2,7 +2,11 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Transactions', {
-      
+      coinId: {
+        allowNull: false,
+        type: Sequelize.STRING,
+        references: {model: 'Coins', key:'coin'}
+      },
       value: {
         allowNull: false,
         type: Sequelize.DECIMAL

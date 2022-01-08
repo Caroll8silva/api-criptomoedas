@@ -12,10 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
      Transactions.hasMany(models.Coins, {
       foreignKey: 'transactions', 
-      foreignKey: 'value'
+      foreignKey: 'amont'
 
     })
     Transactions.belongsTo(models.Wallets)
+    Transactions.belongsTo(models.Coins)
     }
   };
   Transactions.init({

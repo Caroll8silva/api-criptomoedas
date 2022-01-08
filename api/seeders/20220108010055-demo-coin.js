@@ -1,12 +1,10 @@
 'use strict';
 
-const { Transaction } = require("sequelize/dist");
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     
-      await queryInterface.bulkInsert('Coins', [
-      // {
+      //await queryInterface.bulkInsert('Transactions', [
+     // {
       //   coin: "BTC",
       //   fullname: "Bitcoin",
       //   amont: "0.00040",
@@ -37,13 +35,14 @@ module.exports = {
         
       // }
     
-    ], {});
+   // ], {});
     
   },
 
   down: async (queryInterface, Sequelize) => {
- 
-     await queryInterface.bulkDelete('Coins', null, {});
+   
+      //await queryInterface.bulkDelete('Transactions', null, {});
      
   }
 };
+

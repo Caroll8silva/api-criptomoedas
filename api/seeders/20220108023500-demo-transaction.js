@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     
-      await queryInterface.bulkInsert('Transactions', [
+      //await queryInterface.bulkInsert('Transactions', [
       // {
       //   coinId: 'BRL',
       //   value: 15.00000,
@@ -33,13 +33,13 @@ module.exports = {
       // }
     
     
-    ], {});
+   // ], {});
     
   },
 
   down: async (queryInterface, Sequelize) => {
    
-      await queryInterface.bulkDelete('Transactions', null, {});
+      //await queryInterface.bulkDelete('Transactions', null, {});
      
   }
 };

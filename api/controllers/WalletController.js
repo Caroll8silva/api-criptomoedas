@@ -5,7 +5,7 @@ class WalletController {
         try {
 
             const todasAsWallets = await database.Wallets.findAll({
-                attributes: { exclude: [ 'CoinId']}
+                attributes: { exclude: [ 'CoinCoin' ]}
             })
         return res.status(200).json(todasAsWallets) 
     

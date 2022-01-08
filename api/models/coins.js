@@ -10,17 +10,25 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Coins.hasMany(models.Wallets, {foreignKey: 'coins'})
-      Coins.hasMany(models.Transactions, {foreignKey: 'coinId'})
+      Coins.hasMany(models.Wallets, {
+        foreignKey: 'coin',
+        
+      })
       Coins.belongsTo(models.Transactions)
-      
+
     }
   };
   Coins.init({
+    coinId: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
+    },
     coin: DataTypes.STRING,
     fullname: DataTypes.STRING,
     amont: DataTypes.DECIMAL,
-    transactions: DataTypes.STRING
+    transactions: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Coins',

@@ -6,26 +6,23 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
-        id:true
+        type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING,
-        allowNull: false
-
+        allowNull: false,
+        type: Sequelize.STRING
       },
       cpf: {
-        type: Sequelize.STRING,
-        allowNull: false
-
+        allowNull: false,
+        type: Sequelize.STRING
       },
       birthdate: {
-        type: Sequelize.DATEONLY,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.DATEONLY
       },
-      coins: {
-        type: Sequelize.STRING,
-        references: {model: 'Coins', key: 'coin'}
+      coin: {
+        type: Sequelize.INTEGER,
+        references: {model: 'Coins', key: 'coinId'}
       },
       createdAt: {
         allowNull: false,

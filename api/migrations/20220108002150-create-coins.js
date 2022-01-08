@@ -2,12 +2,11 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Coins', {
-    
       coin: {
         type: Sequelize.STRING,
         primaryKey: true,
-        allowNull: false
-
+        allowNull: false,
+        
       },
       fullname: {
         allowNull: false,
@@ -16,12 +15,13 @@ module.exports = {
       },
       amont: {
         allowNull: false,
-        type: Sequelize.DECIMAL
+        type: Sequelize.DECIMAL,
+       // references: {model: 'transactions', key: 'value'}
 
       },
       transactions: {
-        type: Sequelize.STRING
-        
+        type: Sequelize.STRING,
+        //references: {model: 'transactions', key: 'sendTo'}
       }
 
     });

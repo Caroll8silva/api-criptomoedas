@@ -22,8 +22,9 @@ module.exports = {
         type: Sequelize.DATEONLY,
         allowNull: false
       },
-      coin: {
-        type: Sequelize.STRING
+      coins: {
+        type: Sequelize.STRING,
+        references: {model: 'Coins', key: 'coin'}
       },
       createdAt: {
         allowNull: false,

@@ -11,27 +11,40 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Coins.hasMany(models.Wallets, {
-        foreignKey: 'coin',
-        
-      })
-      Coins.belongsTo(models.Transactions)
-
-    }
+        foreignKey: 'coin'
+       
+  
+      }) }
   };
   Coins.init({
     coinId: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      allowNull: false,
-      primaryKey: true
-    },
-    coin: DataTypes.STRING,
-    fullname: DataTypes.STRING,
-    amont: DataTypes.DECIMAL,
-    transactions: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Coins',
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    allowNull: false,
+    primaryKey: true
+  },
+  coin: {
+    type: DataTypes.STRING,
+    allowNull: false 
+    
+  },
+  fullname: {
+    allowNull: false,
+    type: DataTypes.STRING
+  },
+  amont: {
+    allowNull: false,
+    type: DataTypes.DECIMAL
+  },
+  transactions: {
+    type: DataTypes.INTEGER,
+    references: {model: 'Transactions', key: 'transactionsid' }
+
+  }}, {
+  sequelize,
+    modelName: 'Coins'
+  
   });
+  
   return Coins;
 };

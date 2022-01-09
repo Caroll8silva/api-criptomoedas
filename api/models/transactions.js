@@ -18,20 +18,36 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Transactions.init({
-    transactionsId: {
+    transactionsid: {
       allowNull: false,
-      autoIncrement: true,
+      autoIncrement: true, 
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    value: DataTypes.DECIMAL,
-    datetime: DataTypes.DATE,
-    sendTo: DataTypes.INTEGER,
-    receiveFrom: DataTypes.INTEGER,
-    currentCotation: DataTypes.DECIMAL
+    value: {
+      allowNull: false,
+      type: DataTypes.DECIMAL
+    },
+    datetime: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    sendTo: {
+      allowNull: false,
+      type: DataTypes.INTEGER
+    },
+    receiveFrom: {
+      allowNull: false,
+      type: DataTypes.INTEGER
+    },
+    currentCotation: {
+      allowNull: false,
+      type: DataTypes.DECIMAL
+    }
   }, {
     sequelize,
-    modelName: 'Transactions',
+    modelName: 'Transactions'
+
   });
   return Transactions;
 };

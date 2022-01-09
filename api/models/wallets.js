@@ -21,10 +21,31 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    name: DataTypes.STRING,
-    cpf: DataTypes.STRING,
-    birthdate: DataTypes.DATEONLY,
-    coin: DataTypes.STRING
+    name: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    cpf: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    birthdate: {
+      allowNull: false,
+      type: DataTypes.DATEONLY
+    },
+    coin: {
+      type: DataTypes.INTEGER,
+      references: {model: 'Coins', key: 'coinId'}
+    },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    }
+    
   }, {
     sequelize,
     modelName: 'Wallets',

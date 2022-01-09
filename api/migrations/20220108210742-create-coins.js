@@ -14,7 +14,7 @@ module.exports = {
       },
       coin: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false 
         
       },
       fullname: {

@@ -5,7 +5,7 @@ class WalletController {
         try {
 
             const todasAsWallets = await database.Wallets.findAll({
-                attributes: { exclude: [ 'CoinCoin' ]}
+                attributes: { exclude: [ 'CoinCoinId' ]}
             })
         return res.status(200).json(todasAsWallets) 
     
@@ -14,27 +14,23 @@ class WalletController {
         return res.status(500).json(error.message)
     }
 }
-//     static async pegaUmNome(req, res){
-//         const { name } = req.query
-//         try {
+      static async pegaUmaWallet(req, res){
+         const { address } = req.query
+         try {
 
-//         const umNome = await database.Wallets.findOne({
-//             where: {
+       const umaWallet = await database.Wallets.findOne({
+        attributes: {where: { address: Number(address)}, exclude: [ 'CoinCoinId' ]}
+        })
+         return res.status(200).json(umaWallet) 
 
-//                 name: name
+ }       catch (error) {
 
-//             }
-//         })
-//         return res.status(200).json(umNome) 
+         return res.status(500).json(error.message)
 
-// }       catch (error) {
-
-//         return res.status(500).json(error.message)
-
-// }
+ }
 
     
-// }
+ }
 
 static async criaWallet(req, res) {
     const novaWallet = req.body

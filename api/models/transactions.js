@@ -10,44 +10,19 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Transactions.hasMany(models.Coins, {
-        foreignKey: 'transactions'
-       
-  
-      })
+      Transactions.belongsTo(models.Coins)
+      
     }
   };
   Transactions.init({
-    transactionsid: {
-      allowNull: false,
-      autoIncrement: true, 
-      primaryKey: true,
-      type: DataTypes.INTEGER
-    },
-    value: {
-      allowNull: false,
-      type: DataTypes.DECIMAL
-    },
-    datetime: {
-      allowNull: false,
-      type: DataTypes.DATE
-    },
-    sendTo: {
-      allowNull: false,
-      type: DataTypes.INTEGER
-    },
-    receiveFrom: {
-      allowNull: false,
-      type: DataTypes.INTEGER
-    },
-    currentCotation: {
-      allowNull: false,
-      type: DataTypes.DECIMAL
-    }
+    value: DataTypes.FLOAT,
+    datetime: DataTypes.DATE,
+    sendTo: DataTypes.INTEGER,
+    receiveFrom: DataTypes.INTEGER,
+    currentCotation: DataTypes.FLOAT
   }, {
     sequelize,
-    modelName: 'Transactions'
-
+    modelName: 'Transactions',
   });
   return Transactions;
 };

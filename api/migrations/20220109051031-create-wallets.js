@@ -20,10 +20,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATEONLY
       },
-      coin: {
-        type: Sequelize.INTEGER,
-        references: {model: 'Coins', key: 'coinId'}
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

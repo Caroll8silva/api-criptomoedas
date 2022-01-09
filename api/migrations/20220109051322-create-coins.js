@@ -1,21 +1,16 @@
 'use strict';
-
-const transactions = require("../models/transactions");
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Coins', {
-      
-      coinId: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
+      walletId: {
         allowNull: false,
-        primaryKey: true
+        type: Sequelize.INTEGER,
+        references: { model:'Wallets', key:'coin'}
       },
       coin: {
+        allowNull: false,
         type: Sequelize.STRING,
-        allowNull: false 
-        
+        primaryKey: true
       },
       fullname: {
         allowNull: false,
@@ -23,11 +18,7 @@ module.exports = {
       },
       amont: {
         allowNull: false,
-        type: Sequelize.DECIMAL
-      },
-      transactions: {
-        type: Sequelize.INTEGER,
-        references: {model: 'Transactions', key: 'transactionsid' }
+        type: Sequelize.FLOAT
       }
     });
   },

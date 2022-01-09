@@ -124,7 +124,21 @@ class WalletController {
         }
     }
 
+    static async transfereWallet(req, res) {
+        
+        const transferirWallet = req.body
+       
+        try {
 
+            const walletTransferida = await database.Transactions.create(transferirWallet, {})
+
+            return res.status(201).json(walletTransferida)
+
+        } catch (error) {
+
+            return res.status(404).json(error.message)
+        }
+    }
 }
 
 module.exports = WalletController

@@ -10,8 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-     Wallets.hasMany(models.Coins, { foreignKey: 'walletId'})
-     
+      Wallets.hasMany(models.Coins, { foreignKey: 'coin'})
     }
   };
   Wallets.init({
@@ -23,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: DataTypes.STRING,
     cpf: DataTypes.STRING,
-    birthdate: DataTypes.DATEONLY
+    birthdate: DataTypes.DATEONLY,
+    coin: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Wallets',

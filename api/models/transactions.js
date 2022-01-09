@@ -10,16 +10,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Transactions.belongsTo(models.Coins)
-      
+      Transactions.belongsTo(models.Coins, {foreignKey: 'transactionId'})
     }
   };
   Transactions.init({
-    value: DataTypes.FLOAT,
+    transactionId: DataTypes.INTEGER,
+    value: DataTypes.DECIMAL,
     datetime: DataTypes.DATE,
     sendTo: DataTypes.INTEGER,
     receiveFrom: DataTypes.INTEGER,
-    currentCotation: DataTypes.FLOAT
+    currentCotation: DataTypes.DECIMAL
   }, {
     sequelize,
     modelName: 'Transactions',

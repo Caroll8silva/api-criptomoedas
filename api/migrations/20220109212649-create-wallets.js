@@ -9,16 +9,17 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       cpf: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       birthdate: {
-        allowNull: false,
         type: Sequelize.DATEONLY
+      },
+      coin: { 
+        type: Sequelize.INTEGER
+      
       },
       createdAt: {
         allowNull: false,

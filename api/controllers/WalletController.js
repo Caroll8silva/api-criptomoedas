@@ -2,9 +2,17 @@ const database = require('../models')
 
 class WalletController {
      static async pegaTodasAsWallets(req, res){
-        try {
+        try { 
 
-            const todasAsWallets = await database.Wallets.findAll()
+            const todasAsWallets = await database.Wallets.findAll( { 
+                include: 
+                [{ model: database.Coins, attributes: ['coin','fullname','amont'],
+                as: 'Coins',
+                include: 
+                [{ model: database.Transactions, attributes: ['value','datetime','sendTo','receiveFrom', 'currentCotation'],
+                    as: 'Transactions' }]
+            } ]})
+            
         return res.status(200).json(todasAsWallets) 
     
     }   catch (error) {
@@ -16,11 +24,9 @@ class WalletController {
          const { address } = req.query
          try {
 
-       const umaWallet = await database.Wallets.findOne({
-        attributes: {where: { address: Number(address)}, exclude: [ 'CoinCoinId' ]
-}
-        })
-         return res.status(200).json(umaWallet) 
+       const umaWallet = await database.Wallets.findOne({where: { address: Number(address)}})
+        
+        return res.status(200).json(umaWallet) 
 
  }       catch (error) {
 
@@ -31,16 +37,13 @@ class WalletController {
     
  }
 
-static async criaWallet(req, res) {
+    static async criaWallet(req, res) {
     const novaWallet = req.body
     try {
         
-        const novaWalletCriada = await database.Wallets.create(novaWallet, {
-
-
-
-        })
-        return res.status(200).json(novaWalletCriada)
+        const novaWalletCriada = await database.Wallets.create(novaWallet, {})
+        
+        return res.status(201).json(novaWalletCriada)
         
     } catch (error) {
 
@@ -55,9 +58,8 @@ static async criaWallet(req, res) {
     try {
 
         await database.Wallets.update(novasInfos, { where: { coin : Number(coin)}})
-        const walletAtualizada = await database.Wallets.findOne({
-            attributes: {where: { coin: Number(coin)}, exclude: [ 'CoinCoinId' ]
-         } })
+        const walletAtualizada = await database.Wallets.findOne({  where: { coin: Number(coin)}})
+
             return res.status(200).json(walletAtualizada)
 
     } catch (error) {

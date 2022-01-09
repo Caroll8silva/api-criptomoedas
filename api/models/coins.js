@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const wallets = require('./wallets');
 module.exports = (sequelize, DataTypes) => {
   class Coins extends Model {
     /**
@@ -10,19 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Coins.hasMany(models.Transactions, {foreignKey: 'coinId'})
-      Coins.belongsTo(models.Wallets)
+      Coins.belongsTo(models.Wallets, {foreignKey: 'coin'})
+      Coins.hasMany(models.Transactions, {foreignKey: 'transactionId'})
+
     }
   };
   Coins.init({
-    walletId: DataTypes.INTEGER,
-    coin: {
-      allowNull: false,
-      type: DataTypes.STRING,
-      primaryKey: true
-    },
+    coinId: DataTypes.INTEGER,
+    coin: DataTypes.STRING,
     fullname: DataTypes.STRING,
-    amont: DataTypes.FLOAT
+    amont: DataTypes.DECIMAL
   }, {
     sequelize,
     modelName: 'Coins',

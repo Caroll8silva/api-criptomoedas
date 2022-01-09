@@ -2,15 +2,14 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Coins', {
-      walletId: {
+      coinId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model:'Wallets', key:'coin'}
+        references: {model:'Wallets', key:'coin'}
       },
       coin: {
         allowNull: false,
-        type: Sequelize.STRING,
-        primaryKey: true
+        type: Sequelize.STRING, 
       },
       fullname: {
         allowNull: false,
@@ -18,7 +17,7 @@ module.exports = {
       },
       amont: {
         allowNull: false,
-        type: Sequelize.FLOAT
+        type: Sequelize.DECIMAL
       }
     });
   },

@@ -10,7 +10,7 @@ Desafio referente a 3º Sprint, onde o objetivo foi a criação de uma Api semel
 <br>
 Devido a muitos e muitos erros que me derapei ao longo da criação da API, não consegui finalizar todas as funcionalidades a tempo 😢 porém pretendo terminar todas para não cometer os mesmos erros nos desafios futuros.
 
-## TECNOLOGIAS UTILIZADAS PARA O DESENVOLVIMENTO DO PROJETO
+## TECNOLOGIAS UTILIZADAS PARA O DESENVOLVIMENTO DA API
 
 ![tec](https://user-images.githubusercontent.com/63256085/148708224-7a9ff2cd-686f-4f43-919f-baa378bcc41b.png)
 

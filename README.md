@@ -8,7 +8,7 @@ Desafio referente a 3º Sprint, onde o objetivo foi a criação de uma Api semel
 <br>
 <br>
 <br>
-Devido a muitos e muitos erros que me derapei ao longo da criação da API, não consegui finalizar todas as funcionalidades a tempo 😢 porém pretendo terminar todas para não cometer os mesmos erros nos desafios futuros.
+
 
 ## TECNOLOGIAS UTILIZADAS PARA O DESENVOLVIMENTO DA API
 
